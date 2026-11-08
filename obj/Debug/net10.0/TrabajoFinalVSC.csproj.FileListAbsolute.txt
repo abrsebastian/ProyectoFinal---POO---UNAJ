@@ -1,0 +1,15 @@
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\bin\Debug\net10.0\TrabajoFinalVSC.exe
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\bin\Debug\net10.0\TrabajoFinalVSC.dll.config
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\bin\Debug\net10.0\TrabajoFinalVSC.deps.json
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\bin\Debug\net10.0\TrabajoFinalVSC.runtimeconfig.json
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\bin\Debug\net10.0\TrabajoFinalVSC.dll
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\bin\Debug\net10.0\TrabajoFinalVSC.pdb
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.GeneratedMSBuildEditorConfig.editorconfig
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.AssemblyInfoInputs.cache
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.AssemblyInfo.cs
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.csproj.CoreCompileInputs.cache
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.dll
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\refint\TrabajoFinalVSC.dll
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.pdb
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\TrabajoFinalVSC.genruntimeconfig.cache
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI\TrabajoFinalVSC\obj\Debug\net10.0\ref\TrabajoFinalVSC.dll
