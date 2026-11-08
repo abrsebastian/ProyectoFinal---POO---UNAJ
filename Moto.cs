@@ -27,6 +27,13 @@ namespace tp
 			
 			Console.WriteLine("Cilindrada: " + cilindrada);
 		}
-		
+
+        public override void CargarDatosVehiculo(string marca, string modelo, string patente, int anio, float precioxdia)
+        {
+			System.Console.WriteLine("Ingrese la cilindrada");
+			cilindrada = Convert.ToInt32(Console.ReadLine());
+
+            base.CargarDatosVehiculo(marca, modelo, patente, anio, precioxdia);
+        }
 	}
 }
