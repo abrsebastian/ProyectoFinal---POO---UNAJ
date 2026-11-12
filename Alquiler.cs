@@ -46,8 +46,8 @@ namespace tp
 			System.Console.WriteLine("-----------------------------------------");
 			vehiculo.MostrarDatos();
 			System.Console.WriteLine("-----------------------------------------");
-			System.Console.WriteLine("Dias: {0}" + dias);
-			System.Console.WriteLine("Total: {0}" + total);
+			System.Console.WriteLine("Dias: " + dias);
+			System.Console.WriteLine("Total: " + total);
 		}
 	}
 

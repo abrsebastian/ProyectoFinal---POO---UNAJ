@@ -15,7 +15,8 @@ public class Menu
         List<Vehiculo> listaVehiculos = new List<Vehiculo>();
         int opcion = 0;
 
-		Console.WriteLine("Agencia de alquiler de vehiculos.");
+		Console.WriteLine("Bienvenido a Alquileres UNAJ.");
+        System.Console.WriteLine("Presione una tecla para continuar");
 		Console.ReadKey(true);
 
 		do
@@ -241,7 +242,7 @@ public class Menu
                 System.Console.WriteLine("ERROR: El vehículo seleccionado no está disponible en este momento.");
             }
             
-            System.Console.WriteLine("¿Desea realizar otra operacion?");
+            System.Console.WriteLine("¿Desea realizar otra operacion? (s/n)");
             DeseaContinuar();
           }
         while(continuar); 
@@ -316,14 +317,14 @@ public class Menu
 
             agencia.RegistrarCliente(nombreIngresado, apellidoIngresado,telefonoIngresado, dniIngresado);
 
-            System.Console.WriteLine("¿Desea registrar otro Cliente?");
+            System.Console.WriteLine("¿Desea registrar otro Cliente? (s/n)");
             DeseaContinuar();
 
         }
         while(continuar);
         
     }
-    
+
     public void DeseaContinuar()
     {
         deseaContinuar = Console.ReadLine().ToLower();
@@ -401,22 +402,7 @@ public class Menu
             }
 
             System.Console.WriteLine("¿Desea buscar/eliminar otro vehiculo? (s/n)");
-            deseaContinuar = Console.ReadLine().ToLower();
-
-            while(deseaContinuar != "s" && deseaContinuar != "n")
-            {
-                System.Console.WriteLine("La opción ingresada no es valida, ingrese (s/n)");
-                deseaContinuar = Console.ReadLine().ToLower();
-            }
-
-            if(deseaContinuar == "s")
-            {
-                continuar = true;
-            }
-            else
-            {
-                continuar = false;
-            }      
+            DeseaContinuar();  
         }
         while(continuar);
             
@@ -731,23 +717,7 @@ public class Menu
                     agencia.AgregarVehiculo(nuevaCamioneta);
 
                     System.Console.WriteLine("¿Desea agregar otra Camioneta? (s/n)");
-                    deseaContinuar = Console.ReadLine().ToLower();
-
-                    while(deseaContinuar.ToLower() != "s" && deseaContinuar != "n")
-                    {
-                        System.Console.WriteLine("La opción ingresada no es válida. Ingrese (s/n)");
-                        deseaContinuar = Console.ReadLine().ToLower();
-                    }
-
-                    if(deseaContinuar.ToLower() == "s")
-                    {   
-                        continuar = true;
-                        
-                    }
-                    else if(deseaContinuar.ToLower() == "n")
-                    {   
-                        continuar = false;
-                    }
+                    DeseaContinuar();
                 }
                 while(continuar); 
 
@@ -867,23 +837,8 @@ public class Menu
                     agencia.AgregarVehiculo(nuevaMoto);
 
                     System.Console.WriteLine("¿Desea agregar otra Moto? (s/n)");
-                    deseaContinuar = Console.ReadLine().ToLower();
 
-                    while(deseaContinuar.ToLower() != "s" && deseaContinuar != "n")
-                    {
-                        System.Console.WriteLine("La opción ingresada no es válida. Ingrese (s/n)");
-                        deseaContinuar = Console.ReadLine().ToLower();
-                    }
-
-                    if(deseaContinuar.ToLower() == "s")
-                    {   
-                        continuar = true;
-                        
-                    }
-                    else if(deseaContinuar.ToLower() == "n")
-                    {   
-                        continuar = false;
-                    }
+                    DeseaContinuar();
                 }
                 while(continuar); 
 

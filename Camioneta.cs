@@ -50,7 +50,8 @@ namespace tp
 			base.MostrarDatos();
 			
 			Console.WriteLine("Capacidad de carga: " + capacidadCarga);
-			Console.WriteLine("Es 4x4: "+ es4x4);
+			Console.WriteLine("Tracción: "+ traccion);
+			System.Console.WriteLine("------------------------------------");
 		}
 
         public override bool TieneSeguroAdicional()

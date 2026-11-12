@@ -62,7 +62,7 @@ namespace tp
 
     		Console.WriteLine("Tipo de Auto: " + tipoDeAuto);
     		Console.WriteLine("Transmisión: " + tipoDeTransmision);
-			System.Console.WriteLine("El  precio por día: $" + base.precioxdia);
+			System.Console.WriteLine("El precio por día: $" + base.precioxdia);
 		}
 
         public override bool TieneSeguroAdicional()

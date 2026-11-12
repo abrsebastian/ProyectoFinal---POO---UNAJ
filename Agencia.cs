@@ -99,6 +99,7 @@ namespace tp
 			foreach (Vehiculo v in vehiculos)
 			{
 				v.MostrarDatos();
+				System.Console.WriteLine("--------------------------------------");
 			}
 		}
 	}
@@ -113,7 +114,9 @@ namespace tp
 				vehiculoEncontrado = v;
 				vehiculos.Remove(v);
 
-				System.Console.WriteLine("El vehiculo {0} ha sido removido de la lista." + v.MostrarDatos);
+				System.Console.WriteLine("El vehiculo ha sido removido de la lista.");
+				v.MostrarDatos();
+				System.Console.WriteLine("--------------------------------------------");
 				break;
 			}
 		}
@@ -162,9 +165,10 @@ namespace tp
 		foreach(Vehiculo v in vehiculos)
 		{
 			if (v.TieneSeguroAdicional())
-			{
+			{	
+				System.Console.WriteLine("-----------------------------------------------");
 				v.MostrarDatos();
-				System.Console.WriteLine("------------------------------");
+				System.Console.WriteLine("-----------------------------------------------");
 				contador++;
 			}
 		}
@@ -196,18 +200,20 @@ namespace tp
 	public void MostrarClientes()
 	{
 		foreach(Cliente c in clientes)
-		{
+		{	
+			System.Console.WriteLine("-----------------------------------------------");
 			c.MostrarDatosCliente();
+			System.Console.WriteLine("-----------------------------------------------");
 		}
 	}
 	
-
 	public void MostrarHistorialAlquileres()
 	{
     	if (alquileres.Count == 0)
-    	{
+    	{	
+			System.Console.WriteLine("-----------------------------------------------");
         	System.Console.WriteLine("No hay alquileres registrados en el historial.");
-			System.Console.WriteLine("--------------------------------------------------");
+			System.Console.WriteLine("-----------------------------------------------");
     	}
     	else
     	{
@@ -220,4 +226,3 @@ namespace tp
 }
 
 }
-
