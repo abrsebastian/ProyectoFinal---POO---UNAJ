@@ -39,6 +39,7 @@ namespace tp
 
 			this.cantDePuertas=cantDePuertas;
 			this.cajaAutomatica=cajaAutomatica;
+			this.tipo = "Auto";
 		}
 
 		public override float CalcularAlquiler(int dias)
@@ -63,6 +64,11 @@ namespace tp
     		Console.WriteLine("Transmisión: " + tipoDeTransmision);
 			System.Console.WriteLine("El  precio por día: $" + base.precioxdia);
 		}
+
+        public override bool TieneSeguroAdicional()
+        {
+            return true;
+        }
 
 
 	}

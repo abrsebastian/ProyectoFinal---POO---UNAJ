@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace tp
 {
 	
-	public class Vehiculo
+	public abstract class Vehiculo
 	{
 		protected string patente;
 		protected string marca;
@@ -13,6 +13,7 @@ namespace tp
 		protected int anio;
 		protected float precioxdia;
 		protected bool disponibilidad;
+		public string tipo;
 		
 		public Vehiculo(string patente, string marca, string modelo, int anio, float precioxdia)
 		{
@@ -22,6 +23,12 @@ namespace tp
 			this.anio=anio;
 			this.precioxdia=precioxdia;
 			this.disponibilidad=true;
+		}
+		
+		public string Tipo
+		{
+			get{ return tipo;}
+			protected set {}
 		}
 		public virtual float CalcularAlquiler(int dias)
 		{
@@ -41,19 +48,10 @@ namespace tp
     		set { disponibilidad = value; }
 		}
 
-		/*public virtual void CargarDatosVehiculo(string marca, string modelo, string patente, int anio, float precioxdia)
-		{
-			System.Console.WriteLine("Ingrese Marca del vehiculo:");
-			marca = Console.ReadLine();
-			System.Console.WriteLine("Ingrese Modelo del vehiculo");
-			modelo = Console.ReadLine();
-			System.Console.WriteLine("ingrese la Patente del Vehiculo");
-			patente = Console.ReadLine();
-			System.Console.WriteLine("Ingrese el año del vehiculo");
-			anio = Convert.ToInt32(Console.ReadLine());
-			System.Console.WriteLine("Ingrese el precio por dia");
-			precioxdia = float.Parse(Console.ReadLine());
-		}*/
+		public virtual bool TieneSeguroAdicional()
+    	{
+        	return false;
+    	}
 		
 		public virtual void MostrarDatos()
 		{

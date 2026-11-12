@@ -18,6 +18,66 @@ namespace tp
 			this.alquileres = new List<Alquiler>();
 		}
 
+		public void MostrarAutos()
+    {
+        int contador = 0;
+
+        foreach (Vehiculo v in vehiculos)
+        {
+            if (v.tipo == "Auto")
+            {
+                v.MostrarDatos();
+                System.Console.WriteLine("---------------------------------------------");
+                contador++;
+            }
+        }
+
+        if (contador == 0)
+        {
+            System.Console.WriteLine("No hay autos registrados.");
+        }
+    }
+
+    public void MostrarCamionetas()
+    {
+        int contador = 0;
+
+        foreach (Vehiculo v in vehiculos)
+        {
+            if (v.tipo ==  "Camioneta")
+            {
+                v.MostrarDatos();
+                System.Console.WriteLine("---------------------------------------------");
+                contador++;
+            }
+        }
+
+        if (contador == 0)
+        {
+            System.Console.WriteLine("No hay camionetas registradas.");
+        }
+    }
+
+    public void MostrarMotos()
+    {
+        int contador = 0;
+
+        foreach (Vehiculo v in vehiculos)
+        {
+            if (v.tipo == "Moto")
+            {
+                v.MostrarDatos();
+                System.Console.WriteLine("---------------------------------------------");
+                contador++;
+            }
+        }
+
+        if (contador == 0)
+        {
+            System.Console.WriteLine("No hay motos registradas.");
+        }
+    }
+
 		public void MostarDatosAlquiler()
 		{
 			System.Console.WriteLine("");
@@ -33,9 +93,17 @@ namespace tp
 
 		public void MostrarVehiculos()
 		{
-			foreach (Vehiculo v in vehiculos)
+
+			if(vehiculos.Count == 0)
 			{
-				v.MostrarDatos();
+				System.Console.WriteLine("No hay vehiculos registrados en la agencia");
+			}
+			else
+			{
+				foreach (Vehiculo v in vehiculos)
+				{
+					v.MostrarDatos();
+				}
 			}
 		}
 

@@ -12,3 +12,4 @@ D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI_FINAL\obj\Debug\net10.0
 D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI_FINAL\obj\Debug\net10.0\TFI_FINAL.pdb
 D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI_FINAL\obj\Debug\net10.0\TFI_FINAL.genruntimeconfig.cache
 D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI_FINAL\obj\Debug\net10.0\ref\TFI_FINAL.dll
+D:\Varios\Importantes\UNAJ\Programación con Objetos\TFI_FINAL\obj\Debug\net10.0\TFI_FINAL.sourcelink.json

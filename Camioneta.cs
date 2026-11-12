@@ -29,6 +29,7 @@ namespace tp
 
 			this.capacidadCarga=capacidadCarga;
 			this.es4x4=es4x4;
+			this.tipo = "Camioneta";
 		}
 		public override float CalcularAlquiler(int dias)
 		{
@@ -51,5 +52,10 @@ namespace tp
 			Console.WriteLine("Capacidad de carga: " + capacidadCarga);
 			Console.WriteLine("Es 4x4: "+ es4x4);
 		}
+
+        public override bool TieneSeguroAdicional()
+        {
+            return true;
+        }
 	}
 }

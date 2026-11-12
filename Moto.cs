@@ -17,6 +17,7 @@ namespace tp
 			}
 
 			this.cilindrada=cilindrada;
+			this.tipo = "Moto";
 		}
 		public override float CalcularAlquiler(int dias)
 		{
@@ -33,6 +34,11 @@ namespace tp
 			
 			Console.WriteLine("Cilindrada: " + cilindrada);
 		}
+
+        public override bool TieneSeguroAdicional()
+        {
+            return false;
+        }
 
         
 	}

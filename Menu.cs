@@ -1,3 +1,4 @@
+using System.Net.WebSockets;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using System.Transactions;
@@ -16,8 +17,6 @@ public class Menu
 
 		Console.WriteLine("Agencia de alquiler de vehiculos.");
 		Console.ReadKey(true);
-
-        
 
 		do
 		{
@@ -43,6 +42,26 @@ public class Menu
                     case 2:
                         BuscarYEliminarVehiculo();
                     break;
+                    case 3:
+                        BuscarYRegistrarCliente();
+                    break;
+                    case 4:
+                        AlquilarUnVehiculo();
+                    break;
+                    case 5:
+                        MostrarListadoCompleto();
+                    break;
+                    case 6:
+                        MostrarHistorialAlquileres();
+                    break;
+                    case 7:
+                        agencia.MostrarAutosConSeguroAdicional();
+                    break;
+                    case 8:
+                        System.Console.WriteLine("Saliendo del sistema...");
+                    break;
+                    default: System.Console.WriteLine("Opcion ingresada no valida");
+                    break;
 
 		        }
             }
@@ -58,6 +77,179 @@ public class Menu
 
     }
 
+    public void MostrarListadoCompleto()
+    {
+        agencia.MostrarVehiculos();
+    }
+
+    public void MostrarHistorialAlquileres()
+    {
+        agencia.MostrarAlquileres();
+    }
+    public void AlquilarUnVehiculo()
+    {
+        int dniIngresado = 0;
+        string patenteIngresada = "";
+        int diasIngresados = 0;
+        bool validarDNI = false;
+        bool validarPatente = false;
+        bool validarDias = false;
+        deseaContinuar = "";
+        continuar = false;
+
+        do
+        {
+            System.Console.WriteLine("REALIZAR UN ALQUILER");
+
+            Cliente clienteAlquiler = null;
+            bool clienteValido = false;
+
+
+            while (!clienteValido)
+            {
+                try
+                {
+                    System.Console.WriteLine("Ingrese DNI");
+                    dniIngresado = Convert.ToInt32(Console.ReadLine());
+
+                    clienteAlquiler = agencia.BuscarCliente(dniIngresado);
+
+                    if(clienteAlquiler != null)
+                    {
+                        System.Console.WriteLine("Cliente Encontrado:");
+                        clienteAlquiler.MostrarDatosCliente();
+                        clienteValido = true;
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("No se ha encontrado cliente con ese DNI");
+                        System.Console.WriteLine("¿Desea registrarlo? (s/n)");
+                        deseaContinuar = Console.ReadLine().ToLower();
+
+                        while(deseaContinuar != "s" && deseaContinuar != "n")
+                        {
+                            System.Console.WriteLine("Opción no valida, ingrese (s/n)");
+                            deseaContinuar = Console.ReadLine();
+                        }
+
+                        if(deseaContinuar == "s")
+                        {
+                            BuscarYRegistrarCliente();
+
+                            clienteAlquiler = agencia.BuscarCliente(dniIngresado);
+                            if(clienteAlquiler != null)
+                            {
+                                clienteValido = true;
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("El cliente registrado tiene un DNI distinto al buscado anteriormente.");
+                                System.Console.WriteLine("Por favor, ingrese el DNI con el que desea realizar el alquiler:");
+                            }
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("Operación de alquiler cancelada");
+                            return;
+                        }
+                    }
+                }
+                catch (FormatException)
+                {
+                    System.Console.WriteLine("ERROR. Este campo tiene que ser completado con numeros enteros");
+                }
+            }
+
+            Vehiculo vehiculoAlquiler = null;
+            bool vehiculoValido = false;
+
+            
+            System.Console.WriteLine("LISTA DE AUTOS");
+            agencia.MostrarAutos();
+            System.Console.WriteLine("------------------------------------");
+            System.Console.WriteLine("LISTA DE MOTOS");
+            agencia.MostrarMotos();
+            System.Console.WriteLine("------------------------------------");
+            System.Console.WriteLine("LISTA DE CAMIONETAS");
+            agencia.MostrarCamionetas();
+            System.Console.WriteLine("------------------------------------");
+
+            
+
+            while (!vehiculoValido)
+            {
+                System.Console.WriteLine("Ingrese la patente del vehiculo que desea alquilar o presione X para salir");
+                patenteIngresada = Console.ReadLine().ToUpper();
+
+                if (patenteIngresada == "")
+                {
+                    System.Console.WriteLine("ERROR. La patente no puede estar vacía. Reintente:");
+                }
+                else
+                {
+                    vehiculoAlquiler = agencia.BuscarVehiculo(patenteIngresada);
+
+                    if (vehiculoAlquiler != null)
+                    {
+                        System.Console.WriteLine("¡Vehículo seleccionado con éxito!");
+                        vehiculoValido = true;
+                    }
+                    else
+                    {
+                    System.Console.WriteLine("No existe ningún vehículo registrado con la patente '" + patenteIngresada + "'. Reintente:");
+                    }
+                   
+                }
+                if(patenteIngresada == "X")
+                {
+                    System.Console.WriteLine("Volviendo al menu principal");
+                    return;
+                }
+            }
+
+            validarDias = false;
+
+            while (!validarDias)
+            {
+                try
+                {
+                    
+                    System.Console.WriteLine("Ingrese la cantidad de Dias que quiere alquilar el vehiculo");
+                    diasIngresados = Convert.ToInt32(Console.ReadLine());
+
+                    if(diasIngresados > 0)
+                    {
+                        validarDias = true;
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("ERROR. La cantidad de dias debe ser mayor a cero");
+                    }
+                }
+                catch (FormatException)
+                {
+                    System.Console.WriteLine("ERROR. Este campo debe estars completo con numeros enteros");
+                }
+            }
+
+            try
+            {
+                agencia.RealizarAlquiler(dniIngresado, patenteIngresada, diasIngresados);
+            }
+            catch (VehiculoNoDisponibleException)
+            {
+                System.Console.WriteLine("ERROR: El vehículo seleccionado no está disponible en este momento.");
+            }
+            
+            System.Console.WriteLine("¿Desea realizar otra operacion?");
+            DeseaContinuar();
+          }
+        while(continuar); 
+
+
+
+
+    }
     public void BuscarYRegistrarCliente()
     {
         bool validarDNI = false;
@@ -65,61 +257,81 @@ public class Menu
         int dniIngresado = 0;
         int telefonoIngresado = 0;
         string nombreIngresado;
-        string apellidoIngresado; 
+        string apellidoIngresado;
 
-        System.Console.WriteLine("BUSCAR Y REGISTRAR CLIENTE");
-        System.Console.WriteLine("Ingrese Nombre");
-        nombreIngresado = Console.ReadLine();
-        System.Console.WriteLine("Ingrese Apellido");
-        apellidoIngresado = Console.ReadLine();
 
-        while (!validarDNI)
+        do
         {
-            try
+
+            validarDNI = false;
+            validarTelefono = false;
+
+            System.Console.WriteLine("BUSCAR Y REGISTRAR CLIENTE");
+            System.Console.WriteLine("Ingrese Nombre");
+            nombreIngresado = Console.ReadLine();
+            System.Console.WriteLine("Ingrese Apellido");
+            apellidoIngresado = Console.ReadLine();
+
+            while (!validarDNI)
             {
-                System.Console.WriteLine("Ingrese DNI");
-                dniIngresado = Convert.ToInt32(Console.ReadLine());
-
-                Cliente clienteBuscado = agencia.BuscarCliente(dniIngresado);
-
-                if(clienteBuscado != null)
+                try
                 {
-                    System.Console.WriteLine("Ya hay un cliente registrado con este DNI");
-                    break;
+                    System.Console.WriteLine("Ingrese DNI");
+                    dniIngresado = Convert.ToInt32(Console.ReadLine());
+
+                    Cliente clienteBuscado = agencia.BuscarCliente(dniIngresado);
+
+                    if(clienteBuscado != null)
+                    {
+                        System.Console.WriteLine("Ya hay un cliente registrado con este DNI");
+                        System.Console.WriteLine("Ingrese un DNI Valido");
+                        dniIngresado = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    }
+                    else
+                    {
+                        validarDNI = true;
+                    }
                 }
-                else
+                catch (FormatException)
                 {
-                    validarDNI = true;
+                    System.Console.WriteLine("ERROR. Este campo tiene que ser completado con numeros enteros");
                 }
             }
-            catch (FormatException)
+
+            while (!validarTelefono)
             {
-                System.Console.WriteLine("ERROR. Este campo tiene que ser completado con numeros enteros");
+                try
+                {
+                    System.Console.WriteLine("Ingrese un número de telefono");
+                    telefonoIngresado = Convert.ToInt32(Console.ReadLine());
+
+                    validarTelefono = true;
+                }
+                catch (FormatException)
+                {
+                    System.Console.WriteLine("Este campo tiene que ser completado con números enteros");
+                }
             }
+
+            agencia.RegistrarCliente(nombreIngresado, apellidoIngresado,telefonoIngresado, dniIngresado);
+
+            System.Console.WriteLine("¿Desea registrar otro Cliente?");
+            DeseaContinuar();
+
         }
-
-        while (!validarTelefono)
-        {
-            try
-            {
-                System.Console.WriteLine("Ingrese un número de telefono");
-                telefonoIngresado = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                System.Console.WriteLine("Este campo tiene que ser completado con números enteros");
-            }
-        }
-
-        agencia.RegistrarCliente(nombreIngresado, apellidoIngresado,telefonoIngresado, dniIngresado);
-
-        System.Console.WriteLine("¿Desea registrar otro Cliente?");
-            deseaContinuar = Console.ReadLine().ToLower();
+        while(continuar);
+        
+    }
+    
+    public void DeseaContinuar()
+    {
+        deseaContinuar = Console.ReadLine().ToLower();
 
             while(deseaContinuar != "s" && deseaContinuar != "n")
             {
                 System.Console.WriteLine("La opción ingresada no es valida, ingrese (s/n)");
-                deseaContinuar = Console.ReadLine().ToLower();
+                 deseaContinuar = Console.ReadLine().ToLower();
             }
 
             if(deseaContinuar == "s")
@@ -130,7 +342,6 @@ public class Menu
             {
                 continuar = false;
             } 
-
     }
 
     public void BuscarYEliminarVehiculo()
@@ -379,23 +590,7 @@ public class Menu
                     agencia.AgregarVehiculo(nuevoAuto);
 
                     System.Console.WriteLine("¿Desea agregar otro auto? (s/n)");
-                    deseaContinuar = Console.ReadLine().ToLower();
-
-                    while(deseaContinuar.ToLower() != "s" && deseaContinuar != "n")
-                    {
-                        System.Console.WriteLine("La opción ingresada no es válida. Ingrese (s/n)");
-                        deseaContinuar = Console.ReadLine().ToLower();
-                    }
-
-                    if(deseaContinuar.ToLower() == "s")
-                    {   
-                        continuar = true;
-                        
-                    }
-                    else if(deseaContinuar.ToLower() == "n")
-                    {   
-                        continuar = false;
-                    }
+                    DeseaContinuar();
                 }
                 while(continuar);
             break;
