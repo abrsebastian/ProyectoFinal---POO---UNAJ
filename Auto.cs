@@ -59,10 +59,12 @@ namespace tp
 		public override void MostrarDatos()
 		{
     		base.MostrarDatos();
-
+			
+			System.Console.WriteLine("-----------------------------------------");
     		Console.WriteLine("Tipo de Auto: " + tipoDeAuto);
     		Console.WriteLine("Transmisión: " + tipoDeTransmision);
 			System.Console.WriteLine("El precio por día: $" + base.precioxdia);
+			System.Console.WriteLine("-----------------------------------------");
 		}
 
         public override bool TieneSeguroAdicional()

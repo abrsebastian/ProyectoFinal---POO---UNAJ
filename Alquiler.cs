@@ -48,6 +48,8 @@ namespace tp
 			System.Console.WriteLine("-----------------------------------------");
 			System.Console.WriteLine("Dias: " + dias);
 			System.Console.WriteLine("Total: " + total);
+			System.Console.WriteLine("-----------------------------------------");
+
 		}
 	}
 

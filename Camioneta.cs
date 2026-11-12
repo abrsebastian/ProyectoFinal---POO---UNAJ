@@ -8,7 +8,7 @@ namespace tp
 		private int capacidadCarga;
 		private bool es4x4;
 		private string traccion; 
-		string tipoDeCamioneta;
+		private string tipoDeCamioneta;
 
 		//600 a 1200 livianas, 850 a 1100 medianas 1500 a 3000 pesadas
 		
