@@ -20,6 +20,20 @@ namespace tp
 		{
 			get { return dni;}
 		}
+		public string Nombre
+		{
+			get { return nombre;}
+		}
+		
+		public string Apellido
+		{
+			get { return apellido;}
+		}
+		
+		public int Telefono
+		{
+			get { return telefono;}
+		}
 		
 		public void MostrarDatosCliente()
 		{	

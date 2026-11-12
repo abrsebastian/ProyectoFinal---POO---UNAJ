@@ -84,7 +84,7 @@ public class Menu
 
     public void MostrarHistorialAlquileres()
     {
-        agencia.MostrarAlquileres();
+        agencia.MostrarHistorialAlquileres();
     }
     public void AlquilarUnVehiculo()
     {
